@@ -36,8 +36,15 @@ function nextQuestion() {
   const input = document.getElementById('answer-input').value.trim();
   answers.push(input);
   currentQuestionIndex++;
-  showQuestion();
+  
+  // すべての問題を解き終えたかチェック
+  if (currentQuestionIndex >= quizData.length) {
+    submitAnswers();
+  } else {
+    showQuestion();
+  }
 }
+
 
 function insertSymbol(sym) {
   const input = document.getElementById('answer-input');
