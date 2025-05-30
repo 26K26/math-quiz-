@@ -1,11 +1,8 @@
-
 const quizData = [];
 for (let i = 1; i <= 20; i++) {
   quizData.push({ question: `${i}^2`, answer: (i * i).toString() });
 }
-
 const GAS_URL = 'https://script.google.com/a/macros/tanabe-ed.com/s/AKfycbz-4z0jXl30FeYDBXZLc0Mqq0jaeEW9LX02pcYRLj1uvvHUckA5PlR9CfLV1Ld9SdqC/exec';
-
 let currentQuestionIndex = 0;
 let answers = [];
 
@@ -36,15 +33,13 @@ function nextQuestion() {
   const input = document.getElementById('answer-input').value.trim();
   answers.push(input);
   currentQuestionIndex++;
-  
-  // すべての問題を解き終えたかチェック
+
   if (currentQuestionIndex >= quizData.length) {
     submitAnswers();
   } else {
     showQuestion();
   }
 }
-
 
 function insertSymbol(sym) {
   const input = document.getElementById('answer-input');
@@ -70,7 +65,6 @@ function submitAnswers() {
   const name = document.getElementById('name').value;
   const grade = document.getElementById('grade').value;
   const cls = document.getElementById('class').value;
-
   fetch(GAS_URL, {
     method: 'POST',
     body: JSON.stringify({
