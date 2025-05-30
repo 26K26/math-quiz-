@@ -1,0 +1,16 @@
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 20px;
+}
+#keypad button {
+  margin: 3px;
+  padding: 10px;
+  font-size: 16px;
+}
+#answer-input {
+  font-size: 20px;
+  width: 200px;
+  margin: 10px;
+}
