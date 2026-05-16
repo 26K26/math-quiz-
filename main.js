@@ -1,40 +1,25 @@
-const quizData = [];
-for (let i = 1; i <= 20; i++) {
-  quizData.push({ question: `${i}^2`, answer: (i * i).toString() });
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 20px;
 }
-
-// ★ 新しいスプレッドシート（GAS）のURLをここに貼り付けてください
-const GAS_URL = 'https://script.google.com/a/macros/tanabe-ed.com/s/AKfycbz-4z0jXl30FeYDBXZLc0Mqq0jaeEW9LX02pcYRLj1uvvHUckA5PlR9CfLV1Ld9SdqC/exec';
-
-let currentQuestionIndex = 0;
-let answers = [];
-let isSubmitting = false; // 連打・二重送信防止用フラグ
-let quizStarted = false;
-
-document.getElementById('user-form').addEventListener('submit', function (e) {
-  e.preventDefault();
-  document.getElementById('start-screen').style.display = 'none';
-  document.getElementById('quiz-screen').style.display = 'block';
-  
-  quizStarted = true;
-  // タブ切り替えとウィンドウのフォーカス外れの両方を監視
-  document.addEventListener("visibilitychange", handleVisibilityChange);
-  window.addEventListener("blur", handleVisibilityChange);
-  
-  showQuestion();
-});
-
-function showQuestion() {
-  if (currentQuestionIndex >= quizData.length) {
-    submitAnswers();
-    return;
-  }
-  document.getElementById('question-text').innerHTML = `\\(${quizData[currentQuestionIndex].question}\\) =`;
-  document.getElementById('answer-input').value = '';
-  
-  // MathJax v3用の安全な再レンダリング呼び出し
-  if (window.MathJax && window.MathJax.typesetPromise) {
-    window.MathJax.typesetPromise();
+#keypad button {
+  margin: 3px;
+  padding: 10px;
+  font-size: 16px;
+  width: 50px; /* 押しやすいように幅を固定 */
+}
+#answer-input {
+  font-size: 20px;
+  width: 200px;
+  margin: 10px;
+  text-align: center;
+}
+#next-button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 16px;
+}    window.MathJax.typesetPromise();
   }
 }
 
